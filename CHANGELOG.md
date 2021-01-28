@@ -3,6 +3,14 @@
 Entries are listed in reverse chronological order per undeprecated
 major series.
 
+## 4.x series
+
+### 4.0.0
+
+* Update the `rand_core` dependency to `0.6`.  This requires a major version
+  because the `digest` traits are part of the public API, but there are
+  otherwise no changes to the API.
+
 ## 3.x series
 
 ### 3.0.2
@@ -20,7 +28,7 @@ major series.
   because the `digest` traits are part of the public API, but there are
   otherwise no changes to the API.
 
-## 2.x series
+## 2.x series (unsupported)
 
 ### 2.1.2
 
@@ -54,7 +62,7 @@ major series.
 The only significant change is the data model change to the `serde` feature;
 besides the `rand_core` version bump, there are no other user-visible changes.
 
-## 1.x series
+## 1.x series (unsupported)
 
 ### 1.2.6
 
