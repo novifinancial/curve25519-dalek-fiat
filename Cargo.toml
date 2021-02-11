@@ -5,11 +5,10 @@ name = "curve25519-dalek-fiat"
 # - update html_root_url
 # - update README if required by semver
 version = "0.1.0"
-authors = ["Isis Lovecruft <isis@patternsinthevoid.net>",
-           "Henry de Valence <hdevalence@hdevalence.ca>"]
+authors = ["opensource+curve25519-dalek-fiat@fb.com"]
 readme = "README.md"
 license = "BSD-3-Clause"
-repository = "https://github.com/novifinancial/curve25519-dalek-fiat"
+repository = "https://github.com/novifinancial/curve25519-dalek"
 documentation = "https://docs.rs/curve25519-dalek-fiat"
 categories = ["cryptography", "no-std"]
 keywords = ["cryptography", "crypto", "ristretto", "curve25519", "ristretto255"]
@@ -17,7 +16,6 @@ description = "A pure-Rust implementation of group operations on ristretto255 an
 exclude = [
     "**/.gitignore",
     ".gitignore",
-    ".travis.yml",
 ]
 
 [package.metadata.docs.rs]

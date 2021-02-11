@@ -29,40 +29,13 @@ prime-order group from a non-prime-order Edwards curve.  This provides the
 speed and safety benefits of Edwards curve arithmetic, without the pitfalls of
 cofactor-related abstraction mismatches.
 
-# Documentation
-
-The semver-stable, public-facing `curve25519-dalek` API is documented
-[here][docs-external].  In addition, the unstable internal implementation
-details are documented [here][docs-internal].
-
-The `curve25519-dalek` documentation requires a custom HTML header to include
-KaTeX for math support. Unfortunately `cargo doc` does not currently support
-this, but docs can be built using
-```sh
-make doc
-make doc-internal
-```
-
 # Use
 
-To import `curve25519-dalek`, add the following to the dependencies section of
+To import `curve25519-dalek-fiat`, add the following to the dependencies section of
 your project's `Cargo.toml`:
 ```toml
 curve25519-dalek-fiat = "0.1.0"
 ```
-
-The `3.x` series has API almost entirely unchanged from the `2.x` series,
-except that the `digest` version was updated.
-
-The `2.x` series has API almost entirely unchanged from the `1.x` series,
-except that:
-
-* an error in the data modeling for the (optional) `serde` feature was
-  corrected, so that when the `2.x`-series `serde` implementation is used
-  with `serde-bincode`, the derived serialization matches the usual X/Ed25519
-  formats;
-
-* the `rand` version was updated.
 
 See `CHANGELOG.md` for more details.
 
@@ -74,6 +47,7 @@ the SIMD backends.
 
 Curve arithmetic is implemented using one of the following backends:
 
+* `fiat_u64_backend` to use a verified u64 backend supplied by the `fiat-crypto` crate
 * a `u32` backend using serial formulas and `u64` products;
 * a `u64` backend using serial formulas and `u128` products;
 * an `avx2` backend using [parallel formulas][parallel_doc] and `avx2` instructions (sets speed records);
@@ -149,60 +123,13 @@ cargo bench --no-default-features --features "std simd_backend"
 Performance is a secondary goal behind correctness, safety, and
 clarity, but we aim to be competitive with other implementations.
 
-# FFI
-
-Unfortunately, we have no plans to add FFI to `curve25519-dalek` directly.  The
-reason is that we use Rust features to provide an API that maintains safety
-invariants, which are not possible to maintain across an FFI boundary.  For
-instance, as described in the _Safety_ section above, invalid points are
-impossible to construct, and this would not be the case if we exposed point
-operations over FFI.
-
-However, `curve25519-dalek` is designed as a *mid-level* API, aimed at
-implementing other, higher-level primitives.  Instead of providing FFI at the
-mid-level, our suggestion is to implement the higher-level primitive (a
-signature, PAKE, ZKP, etc) in Rust, using `curve25519-dalek` as a dependency,
-and have that crate provide a minimal, byte-buffer-oriented FFI specific to
-that primitive.
-
-# Contributing
-
-Please see [CONTRIBUTING.md][contributing].
-
-Patches and pull requests should be make against the `develop`
-branch, **not** `master`.
-
 # About
 
-**SPOILER ALERT:** *The Twelfth Doctor's first encounter with the Daleks is in
-his second full episode, "Into the Dalek". A beleaguered ship of the "Combined
-Galactic Resistance" has discovered a broken Dalek that has turned "good",
-desiring to kill all other Daleks. The Doctor, Clara and a team of soldiers
-are miniaturized and enter the Dalek, which the Doctor names Rusty. They
-repair the damage, but accidentally restore it to its original nature, causing
-it to go on the rampage and alert the Dalek fleet to the whereabouts of the
-rebel ship. However, the Doctor manages to return Rusty to its previous state
-by linking his mind with the Dalek's: Rusty shares the Doctor's view of the
-universe's beauty, but also his deep hatred of the Daleks. Rusty destroys the
-other Daleks and departs the ship, determined to track down and bring an end
-to the Dalek race.*
+This is a fork of the [`curve25519-dalek`][curve25519-dalek] project, authored by
+Isis Agora Lovecruft and Henry de Valence, in order to expose a formally
+verified backed end supplied by the `fiat-crypto` project.
 
-`curve25519-dalek` is authored by Isis Agora Lovecruft and Henry de Valence. 
-
-Portions of this library were originally a port of [Adam Langley's
-Golang ed25519 library](https://github.com/agl/ed25519), which was in
-turn a port of the reference `ref10` implementation.  Most of this code,
-including the 32-bit field arithmetic, has since been rewritten.
-
-The fast `u32` and `u64` scalar arithmetic was implemented by Andrew Moon, and
-the addition chain for scalar inversion was provided by Brian Smith.  The
-optimised batch inversion was contributed by Sean Bowe and Daira Hopwood.
-
-The `no_std` and `zeroize` support was contributed by Tony Arcieri.
-
-Thanks also to Ashley Hauck, Lucas Salibian, and Manish Goregaokar for their
-contributions.
-
+[curve25519-dalek]: https://github.com/dalek-cryptography/curve25519-dalek
 [ed25519-dalek]: https://github.com/dalek-cryptography/ed25519-dalek
 [x25519-dalek]: https://github.com/dalek-cryptography/x25519-dalek
 [contributing]: https://github.com/dalek-cryptography/curve25519-dalek/blob/master/CONTRIBUTING.md
