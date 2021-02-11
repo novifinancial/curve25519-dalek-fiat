@@ -68,10 +68,10 @@ pub trait MultiscalarMul {
     /// iterators returning either `Scalar`s or `&Scalar`s.
     ///
     /// ```
-    /// use curve25519_dalek::constants;
-    /// use curve25519_dalek::traits::MultiscalarMul;
-    /// use curve25519_dalek::ristretto::RistrettoPoint;
-    /// use curve25519_dalek::scalar::Scalar;
+    /// use curve25519_dalek_fiat::constants;
+    /// use curve25519_dalek_fiat::traits::MultiscalarMul;
+    /// use curve25519_dalek_fiat::ristretto::RistrettoPoint;
+    /// use curve25519_dalek_fiat::scalar::Scalar;
     ///
     /// // Some scalars
     /// let a = Scalar::from(87329482u64);
@@ -120,10 +120,10 @@ pub trait VartimeMultiscalarMul {
     /// inlining point decompression into the multiscalar call,
     /// avoiding the need for temporary buffers.
     /// ```
-    /// use curve25519_dalek::constants;
-    /// use curve25519_dalek::traits::VartimeMultiscalarMul;
-    /// use curve25519_dalek::ristretto::RistrettoPoint;
-    /// use curve25519_dalek::scalar::Scalar;
+    /// use curve25519_dalek_fiat::constants;
+    /// use curve25519_dalek_fiat::traits::VartimeMultiscalarMul;
+    /// use curve25519_dalek_fiat::ristretto::RistrettoPoint;
+    /// use curve25519_dalek_fiat::scalar::Scalar;
     ///
     /// // Some scalars
     /// let a = Scalar::from(87329482u64);
@@ -183,10 +183,10 @@ pub trait VartimeMultiscalarMul {
     /// iterators returning either `Scalar`s or `&Scalar`s.
     ///
     /// ```
-    /// use curve25519_dalek::constants;
-    /// use curve25519_dalek::traits::VartimeMultiscalarMul;
-    /// use curve25519_dalek::ristretto::RistrettoPoint;
-    /// use curve25519_dalek::scalar::Scalar;
+    /// use curve25519_dalek_fiat::constants;
+    /// use curve25519_dalek_fiat::traits::VartimeMultiscalarMul;
+    /// use curve25519_dalek_fiat::ristretto::RistrettoPoint;
+    /// use curve25519_dalek_fiat::scalar::Scalar;
     ///
     /// // Some scalars
     /// let a = Scalar::from(87329482u64);

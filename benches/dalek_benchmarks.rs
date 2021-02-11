@@ -10,10 +10,10 @@ extern crate criterion;
 use criterion::BatchSize;
 use criterion::Criterion;
 
-extern crate curve25519_dalek;
+extern crate curve25519_dalek_fiat;
 
-use curve25519_dalek::constants;
-use curve25519_dalek::scalar::Scalar;
+use curve25519_dalek_fiat::constants;
+use curve25519_dalek_fiat::scalar::Scalar;
 
 static BATCH_SIZES: [usize; 5] = [1, 2, 4, 8, 16];
 static MULTISCALAR_SIZES: [usize; 13] = [1, 2, 4, 8, 16, 32, 64, 128, 256, 384, 512, 768, 1024];
@@ -21,7 +21,7 @@ static MULTISCALAR_SIZES: [usize; 13] = [1, 2, 4, 8, 16, 32, 64, 128, 256, 384, 
 mod edwards_benches {
     use super::*;
 
-    use curve25519_dalek::edwards::EdwardsPoint;
+    use curve25519_dalek_fiat::edwards::EdwardsPoint;
 
     fn compress(c: &mut Criterion) {
         let B = &constants::ED25519_BASEPOINT_POINT;
@@ -78,11 +78,11 @@ mod edwards_benches {
 mod multiscalar_benches {
     use super::*;
 
-    use curve25519_dalek::edwards::EdwardsPoint;
-    use curve25519_dalek::edwards::VartimeEdwardsPrecomputation;
-    use curve25519_dalek::traits::MultiscalarMul;
-    use curve25519_dalek::traits::VartimeMultiscalarMul;
-    use curve25519_dalek::traits::VartimePrecomputedMultiscalarMul;
+    use curve25519_dalek_fiat::edwards::EdwardsPoint;
+    use curve25519_dalek_fiat::edwards::VartimeEdwardsPrecomputation;
+    use curve25519_dalek_fiat::traits::MultiscalarMul;
+    use curve25519_dalek_fiat::traits::VartimeMultiscalarMul;
+    use curve25519_dalek_fiat::traits::VartimePrecomputedMultiscalarMul;
 
     fn construct_scalars(n: usize) -> Vec<Scalar> {
         let mut rng = thread_rng();
@@ -227,7 +227,7 @@ mod multiscalar_benches {
 
 mod ristretto_benches {
     use super::*;
-    use curve25519_dalek::ristretto::RistrettoPoint;
+    use curve25519_dalek_fiat::ristretto::RistrettoPoint;
 
     fn compress(c: &mut Criterion) {
         c.bench_function("RistrettoPoint compression", |b| {

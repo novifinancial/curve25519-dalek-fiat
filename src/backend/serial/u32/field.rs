@@ -42,12 +42,12 @@ use zeroize::Zeroize;
 ///
 /// # Note
 ///
-/// The `curve25519_dalek::field` module provides a type alias
-/// `curve25519_dalek::field::FieldElement` to either `FieldElement51`
+/// The `curve25519_dalek_fiat::field` module provides a type alias
+/// `curve25519_dalek_fiat::field::FieldElement` to either `FieldElement51`
 /// or `FieldElement2625`.
 ///
 /// The backend-specific type `FieldElement2625` should not be used
-/// outside of the `curve25519_dalek::field` module.
+/// outside of the `curve25519_dalek_fiat::field` module.
 #[derive(Copy, Clone)]
 pub struct FieldElement2625(pub (crate) [u32; 10]);
 
