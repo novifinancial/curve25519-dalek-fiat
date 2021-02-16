@@ -136,19 +136,19 @@ the original u64 backend, depending on the EdDSA operation.
 
 | group | ed25519_fiat_u64_backend | ed25519_u64_backend |
 | ----- | ------------------------ | ------------------- |
-| Ed25519 batch signature verification/128 | 1.10      3.0±0.01ms | 1.00      2.7±0.01ms |
-| Ed25519 batch signature verification/16  | 1.09    411.7±1.28µs | 1.00    377.8±0.92µs |
-| Ed25519 batch signature verification/256 | 1.09      5.4±0.01ms | 1.00      4.9±0.01ms |
-| Ed25519 batch signature verification/32  | 1.08    779.3±4.87µs | 1.00    723.9±3.21µs |
-| Ed25519 batch signature verification/4   | 1.09    137.9±0.75µs | 1.00    127.0±0.30µs |
-| Ed25519 batch signature verification/64  | 1.15  1590.2±44.34µs | 1.00   1385.2±6.80µs |
-| Ed25519 batch signature verification/8   | 1.09    229.0±0.92µs | 1.00    210.2±0.63µs |
-| Ed25519 batch signature verification/96  | 1.11      2.4±0.08ms | 1.00      2.2±0.01ms |
-| Ed25519 keypair generation               | 1.07     17.9±0.07µs | 1.00     16.7±0.09µs |
-| Ed25519 signature verification           | 1.11     51.1±0.26µs | 1.00     46.1±0.29µs |
-| Ed25519 signing                          | 1.05     18.9±0.09µs | 1.00     18.0±0.07µs |
-| Ed25519 signing w/ an expanded secret key| 1.11     18.6±0.13µs | 1.00     16.8±0.13µs |
-| Ed25519 strict signature verification    | 1.06     53.0±0.33µs | 1.00     50.0±0.15µs |
+| Ed25519 batch signature verification/128 | 1.10&nbsp;&nbsp;&nbsp;3.0±0.01ms | 1.00&nbsp;&nbsp;&nbsp;2.7±0.01ms |
+| Ed25519 batch signature verification/16  | 1.09&nbsp;&nbsp;&nbsp;411.7±1.28µs | 1.00&nbsp;&nbsp;&nbsp;377.8±0.92µs |
+| Ed25519 batch signature verification/256 | 1.09&nbsp;&nbsp;&nbsp;5.4±0.01ms | 1.00&nbsp;&nbsp;&nbsp;4.9±0.01ms |
+| Ed25519 batch signature verification/32  | 1.08&nbsp;&nbsp;&nbsp;779.3±4.87µs | 1.00&nbsp;&nbsp;&nbsp;723.9±3.21µs |
+| Ed25519 batch signature verification/4   | 1.09&nbsp;&nbsp;&nbsp;137.9±0.75µs | 1.00&nbsp;&nbsp;&nbsp;127.0±0.30µs |
+| Ed25519 batch signature verification/64  | 1.15&nbsp;&nbsp;&nbsp;1590.2±44.34µs | 1.00&nbsp;&nbsp;&nbsp;1385.2±6.80µs |
+| Ed25519 batch signature verification/8   | 1.09&nbsp;&nbsp;&nbsp;229.0±0.92µs | 1.00&nbsp;&nbsp;&nbsp;210.2±0.63µs |
+| Ed25519 batch signature verification/96  | 1.11&nbsp;&nbsp;&nbsp;2.4±0.08ms | 1.00&nbsp;&nbsp;&nbsp;2.2±0.01ms |
+| Ed25519 keypair generation               | 1.07&nbsp;&nbsp;&nbsp;17.9±0.07µs | 1.00&nbsp;&nbsp;&nbsp;16.7±0.09µs |
+| Ed25519 signature verification           | 1.11&nbsp;&nbsp;&nbsp;51.1±0.26µs | 1.00&nbsp;&nbsp;&nbsp;46.1±0.29µs |
+| Ed25519 signing                          | 1.05&nbsp;&nbsp;&nbsp;18.9±0.09µs | 1.00&nbsp;&nbsp;&nbsp;18.0±0.07µs |
+| Ed25519 signing w/ an expanded secret key| 1.11&nbsp;&nbsp;&nbsp;18.6±0.13µs | 1.00&nbsp;&nbsp;&nbsp;16.8±0.13µs |
+| Ed25519 strict signature verification    | 1.06&nbsp;&nbsp;&nbsp;53.0±0.33µs | 1.00&nbsp;&nbsp;&nbsp;50.0±0.15µs |
 
 [curve25519-dalek]: https://github.com/dalek-cryptography/curve25519-dalek
 [ed25519-dalek]: https://github.com/dalek-cryptography/ed25519-dalek
