@@ -13,7 +13,7 @@
 
 This is a thin fork of the [`curve25519-dalek`][curve25519-dalek] project, authored by
 Isis Agora Lovecruft and Henry de Valence, in order to expose a formally
-verified backed end supplied by the `fiat-crypto`[fiat crypto] project, where 
+verified backed end supplied by the [`fiat-crypto`][fiat crypto] project, where 
 primitive curve operations are extracted from Coq proofs of arithmetic correctness.
 
 **A pure-Rust implementation of group operations on Ristretto and Curve25519.**
@@ -32,7 +32,7 @@ signatures, anonymous credentials, rangeproofs, and zero-knowledge proof
 systems.
 
 In particular, `curve25519-dalek` implements Ristretto, which constructs a
-prime-order group from a non-prime-order Edwards curve.  This provides the
+prime-order group from a non-prime-order Edwards curve. This provides the
 speed and safety benefits of Edwards curve arithmetic, without the pitfalls of
 cofactor-related abstraction mismatches.
 
@@ -54,7 +54,7 @@ the SIMD backends.
 
 Curve arithmetic is implemented using one of the following backends:
 
-* a `fiat_u64_backend` to use a verified u64 backend supplied by the `fiat-crypto`[fiat crypto] crate;
+* a `fiat_u64_backend` to use a verified u64 backend supplied by the [`fiat-crypto`][fiat crypto] crate;
 * a `u32` backend using serial formulas and `u64` products;
 * a `u64` backend using serial formulas and `u128` products;
 * an `avx2` backend using [parallel formulas][parallel_doc] and `avx2` instructions (sets speed records);
