@@ -5,7 +5,9 @@ name = "curve25519-dalek-fiat"
 # - update html_root_url
 # - update README if required by semver
 version = "0.1.0"
-authors = ["opensource+curve25519-dalek-fiat@fb.com"]
+authors = ["opensource+curve25519-dalek-fiat@fb.com",
+           "Konstantinos Chalkias <kostascrypto@fb.com>",
+           "François Garillot <francois@garillot.net>"]
 readme = "README.md"
 license = "BSD-3-Clause"
 repository = "https://github.com/novifinancial/curve25519-dalek"
