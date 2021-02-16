@@ -11,8 +11,7 @@
  
 # About
 
-This is a thin fork of the [`curve25519-dalek`][curve25519-dalek] project, authored by
-Isis Agora Lovecruft and Henry de Valence, in order to expose a formally
+This is a thin fork of the [`curve25519-dalek`][curve25519-dalek] project, in order to expose a formally
 verified backed end supplied by the [`fiat-crypto`][fiat crypto] project, where 
 primitive curve operations are extracted from Coq proofs of arithmetic correctness.
 
