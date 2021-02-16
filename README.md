@@ -132,7 +132,7 @@ cargo bench --no-default-features --features "std simd_backend"
 Performance is a secondary goal behind correctness, safety, and
 clarity, but we aim to be competitive with other implementations.
 The new `fiat_u64` backend incurs a 8-15% slowdown compared to
-the original u64 backend, depending on the EdDSA operation.
+the original `u64` backend, depending on the EdDSA operation.
 
 | group | ed25519_fiat_u64_backend | ed25519_u64_backend |
 | ----- | ------------------------ | ------------------- |
