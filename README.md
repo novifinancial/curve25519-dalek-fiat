@@ -12,7 +12,7 @@
 # About
 
 This is a thin fork of the [`curve25519-dalek`][curve25519-dalek] project, in order to expose a formally
-verified backed end supplied by the [`fiat-crypto`][fiat crypto] project, where 
+verified backend supplied by the [`fiat-crypto`][fiat crypto] project, where 
 primitive curve operations are extracted from Coq proofs of arithmetic correctness.
 
 **A pure-Rust implementation of group operations on Ristretto and Curve25519.**
