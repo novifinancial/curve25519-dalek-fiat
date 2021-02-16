@@ -8,6 +8,13 @@
  width="33%"
  align="right"
  src="https://doc.dalek.rs/assets/dalek-logo-clear.png"/>
+ 
+# About
+
+This is a thin fork of the [`curve25519-dalek`][curve25519-dalek] project, authored by
+Isis Agora Lovecruft and Henry de Valence, in order to expose a formally
+verified backed end supplied by the `fiat-crypto`[fiat crypto] project, where 
+primitive curve operations are extracted from Coq proofs of arithmetic correctness.
 
 **A pure-Rust implementation of group operations on Ristretto and Curve25519.**
 
@@ -47,7 +54,7 @@ the SIMD backends.
 
 Curve arithmetic is implemented using one of the following backends:
 
-* `fiat_u64_backend` to use a verified u64 backend supplied by the `fiat-crypto` crate
+* a `fiat_u64_backend` to use a verified u64 backend supplied by the `fiat-crypto`[fiat crypto] crate;
 * a `u32` backend using serial formulas and `u64` products;
 * a `u64` backend using serial formulas and `u128` products;
 * an `avx2` backend using [parallel formulas][parallel_doc] and `avx2` instructions (sets speed records);
@@ -55,6 +62,7 @@ Curve arithmetic is implemented using one of the following backends:
 
 By default the `u64` backend is selected.  To select a specific backend, use:
 ```sh
+cargo build --no-default-features --features "std fiat_u64_backend"
 cargo build --no-default-features --features "std u32_backend"
 cargo build --no-default-features --features "std u64_backend"
 # Requires nightly, RUSTFLAGS="-C target_feature=+avx2" to use avx2
@@ -113,6 +121,7 @@ compiled with appropriate `target_feature`s, so this cannot occur.
 Benchmarks are run using [`criterion.rs`][criterion]:
 
 ```sh
+cargo bench --no-default-features --features "std fiat_u64_backend"
 cargo bench --no-default-features --features "std u32_backend"
 cargo bench --no-default-features --features "std u64_backend"
 # Uses avx2 or ifma only if compiled for an appropriate target.
@@ -122,12 +131,24 @@ cargo bench --no-default-features --features "std simd_backend"
 
 Performance is a secondary goal behind correctness, safety, and
 clarity, but we aim to be competitive with other implementations.
+The new `fiat_u64` backend incurs a 8-15% slowdown compared to
+the original u64 backend, depending on the EdDSA operation.
 
-# About
-
-This is a fork of the [`curve25519-dalek`][curve25519-dalek] project, authored by
-Isis Agora Lovecruft and Henry de Valence, in order to expose a formally
-verified backed end supplied by the `fiat-crypto` project.
+group                                          ed25519_fiat_u64_backend    ed25519_u64_backend
+-----                                          ------------------------    -------------------
+Ed25519 batch signature verification/128       1.10      3.0±0.01ms        1.00      2.7±0.01ms
+Ed25519 batch signature verification/16        1.09    411.7±1.28µs        1.00    377.8±0.92µs
+Ed25519 batch signature verification/256       1.09      5.4±0.01ms        1.00      4.9±0.01ms
+Ed25519 batch signature verification/32        1.08    779.3±4.87µs        1.00    723.9±3.21µs
+Ed25519 batch signature verification/4         1.09    137.9±0.75µs        1.00    127.0±0.30µs
+Ed25519 batch signature verification/64        1.15  1590.2±44.34µs        1.00   1385.2±6.80µs
+Ed25519 batch signature verification/8         1.09    229.0±0.92µs        1.00    210.2±0.63µs
+Ed25519 batch signature verification/96        1.11      2.4±0.08ms        1.00      2.2±0.01ms
+Ed25519 keypair generation                     1.07     17.9±0.07µs        1.00     16.7±0.09µs
+Ed25519 signature verification                 1.11     51.1±0.26µs        1.00     46.1±0.29µs
+Ed25519 signing                                1.05     18.9±0.09µs        1.00     18.0±0.07µs
+Ed25519 signing with an expanded secret key    1.11     18.6±0.13µs        1.00     16.8±0.13µs
+Ed25519 strict signature verification          1.06     53.0±0.33µs        1.00     50.0±0.15µs
 
 [curve25519-dalek]: https://github.com/dalek-cryptography/curve25519-dalek
 [ed25519-dalek]: https://github.com/dalek-cryptography/ed25519-dalek
@@ -138,3 +159,4 @@ verified backed end supplied by the `fiat-crypto` project.
 [criterion]: https://github.com/japaric/criterion.rs
 [parallel_doc]: https://doc-internal.dalek.rs/curve25519_dalek/backend/vector/avx2/index.html
 [subtle_doc]: https://doc.dalek.rs/subtle/
+[fiat crypto]: https://github.com/mit-plv/fiat-crypto
