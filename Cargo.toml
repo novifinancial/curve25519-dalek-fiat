@@ -4,7 +4,7 @@ name = "curve25519-dalek-fiat"
 # - update CHANGELOG
 # - update html_root_url
 # - update README if required by semver
-version = "0.1.0"
+version = "0.1.1"
 authors = ["opensource+curve25519-dalek-fiat@fb.com",
            "Konstantinos Chalkias <kostascrypto@fb.com>",
            "François Garillot <francois@garillot.net>"]
@@ -44,7 +44,7 @@ serde = { version = "1.0", default-features = false, optional = true, features =
 # The original packed_simd package was orphaned, see
 # https://github.com/rust-lang/packed_simd/issues/303#issuecomment-701361161
 packed_simd = { version = "0.3.4", package = "packed_simd_2", features = ["into_bits"], optional = true }
-zeroize = { version = "1", default-features = false }
+zeroize = { version = "1.4.2", default-features = false }
 fiat-crypto = { version = "0.1.6", optional = true}
 
 [features]
